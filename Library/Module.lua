@@ -12,6 +12,7 @@ local function MakeDraggable(ClickObject, Object)
 	local StartPosition = nil
 	
 	ClickObject.InputBegan:Connect(function(Input)
+		if InputService:GetFocusedTextBox() == nil then
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 			Dragging = true
 			DragStart = Input.Position
@@ -22,6 +23,7 @@ local function MakeDraggable(ClickObject, Object)
 					Dragging = false
 				end
 			end)
+		end
 		end
 	end)
 	
@@ -400,6 +402,7 @@ function Library:CreateWindow(Config, Parent)
 					end)
 
 					UserInputService.InputBegan:Connect(function(Input)
+						if InputService:GetFocusedTextBox() == nil then
 						if WaitingForBind and Input.UserInputType == Enum.UserInputType.Keyboard then
 							local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 							if not table.find(Blacklist, Key) then
@@ -419,6 +422,7 @@ function Library:CreateWindow(Config, Parent)
 									Callback(Key)
 								end
 							end
+						end
 						end
 					end)
 
@@ -486,10 +490,12 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Slider.InputBegan:Connect(function(Input)
+					if InputService:GetFocusedTextBox() == nil then
                     if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         Sliding(Input)
 						Dragging = true
                     end
+					end
                 end)
 
 				Slider.InputEnded:Connect(function(Input)
@@ -499,8 +505,10 @@ function Library:CreateWindow(Config, Parent)
                 end)
 
 				UserInputService.InputBegan:Connect(function(Input)
+					if InputService:GetFocusedTextBox() == nil then
 					if Input.KeyCode == Enum.KeyCode.LeftControl then
 						Slider.Value.ZIndex = 4
+					end
 					end
 				end)
 
@@ -905,6 +913,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Pallete.GradientPallete.InputBegan:Connect(function(Input)
+					if InputService:GetFocusedTextBox() == nil then
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         if ColorRender then
                             ColorRender:Disconnect()
@@ -919,6 +928,7 @@ function Library:CreateWindow(Config, Parent)
 							UpdateColor()
 						end)
 					end
+					end
 				end)
 
 				Pallete.GradientPallete.InputEnded:Connect(function(Input)
@@ -930,6 +940,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Pallete.ColorSlider.InputBegan:Connect(function(Input)
+					if InputService:GetFocusedTextBox() == nil then
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         if HueRender then
                             HueRender:Disconnect()
@@ -941,6 +952,7 @@ function Library:CreateWindow(Config, Parent)
 							UpdateColor()
 						end)
                     end
+					end
 				end)
 
 				Pallete.ColorSlider.InputEnded:Connect(function(Input)
