@@ -7,9 +7,7 @@ Library.TextColor = Color3.new(0.9, 0.9, 0.9)
 Library.Font = Enum.Font.Gotham
 Library.RegistryMap = {}
 
-local ProtectGui = gethui or (function(gui)
-    gui.Parent = cloneref(game:GetService("CoreGui"))
-end)
+local ProtectGui = gethui or cloneref(game:GetService("CoreGui")
 
 local TweenService = game:GetService("TweenService")
 local UserInputService = cloneref(game:GetService("UserInputService"))
@@ -17,8 +15,8 @@ local HttpService = cloneref(game:GetService("HttpService"))
 local CoreGui = cloneref(game:GetService("CoreGui"))
 
 local ScreenGui = Instance.new("ScreenGui")
-ProtectGui(ScreenGui)
 ScreenGui.Name = "KeySystem"
+ScreenGui.Parent = ProtectGui
 
 function Library:SaveKey(KeyPath, FileName, key)
     if not (isfolder and makefolder and writefile) then
