@@ -12,7 +12,7 @@ local function MakeDraggable(ClickObject, Object)
 	local StartPosition = nil
 	
 	ClickObject.InputBegan:Connect(function(Input)
-		if InputService:GetFocusedTextBox() == nil then
+		if UserInputService:GetFocusedTextBox() == nil then
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 			Dragging = true
 			DragStart = Input.Position
@@ -402,7 +402,7 @@ function Library:CreateWindow(Config, Parent)
 					end)
 
 					UserInputService.InputBegan:Connect(function(Input)
-						if InputService:GetFocusedTextBox() == nil then
+						if UserInputService:GetFocusedTextBox() == nil then
 						if WaitingForBind and Input.UserInputType == Enum.UserInputType.Keyboard then
 							local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 							if not table.find(Blacklist, Key) then
@@ -490,7 +490,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Slider.InputBegan:Connect(function(Input)
-					if InputService:GetFocusedTextBox() == nil then
+					if UserInputService:GetFocusedTextBox() == nil then
                     if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         Sliding(Input)
 						Dragging = true
@@ -505,7 +505,7 @@ function Library:CreateWindow(Config, Parent)
                 end)
 
 				UserInputService.InputBegan:Connect(function(Input)
-					if InputService:GetFocusedTextBox() == nil then
+					if UserInputService:GetFocusedTextBox() == nil then
 					if Input.KeyCode == Enum.KeyCode.LeftControl then
 						Slider.Value.ZIndex = 4
 					end
@@ -913,7 +913,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Pallete.GradientPallete.InputBegan:Connect(function(Input)
-					if InputService:GetFocusedTextBox() == nil then
+					if UserInputService:GetFocusedTextBox() == nil then
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         if ColorRender then
                             ColorRender:Disconnect()
@@ -940,7 +940,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Pallete.ColorSlider.InputBegan:Connect(function(Input)
-					if InputService:GetFocusedTextBox() == nil then
+					if UserInputService:GetFocusedTextBox() == nil then
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         if HueRender then
                             HueRender:Disconnect()
