@@ -218,14 +218,33 @@ G2L["14"]["Name"] = [[Gradient]];
 G2L["14"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 0, 5)),ColorSequenceKeypoint.new(0.200, Color3.fromRGB(255, 0, 252)),ColorSequenceKeypoint.new(0.400, Color3.fromRGB(0, 18, 255)),ColorSequenceKeypoint.new(0.600, Color3.fromRGB(0, 255, 255)),ColorSequenceKeypoint.new(0.800, Color3.fromRGB(22, 255, 0)),ColorSequenceKeypoint.new(0.900, Color3.fromRGB(235, 255, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 0, 5))};
 
 -- StarterGui.Bracket.Pallete.GradientPallete
-G2L["15"] = Instance.new("ImageButton", G2L["11"]);
-G2L["15"]["AutoButtonColor"] = false;
-G2L["15"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 0);
-G2L["15"]["ZIndex"] = 5;
-G2L["15"]["Size"] = UDim2.new(1, -10, 0, 180);
-G2L["15"]["Name"] = [[GradientPallete]];
-G2L["15"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["15"]["Position"] = UDim2.new(0, 5, 0, 5);
+G2L["15"] = Instance.new("Frame", G2L["11"])
+G2L["15"].BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+G2L["15"].ZIndex = 5
+G2L["15"].Size = UDim2.new(1, -10, 0, 180)
+G2L["15"].Name = "GradientPallete"
+G2L["15"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+G2L["15"].Position = UDim2.new(0, 5, 0, 5)
+
+local horiz = Instance.new("UIGradient", G2L["15"])
+horiz.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 0, 0)),
+	ColorSequenceKeypoint.new(0.200, Color3.fromRGB(255, 0, 252)),
+	ColorSequenceKeypoint.new(0.400, Color3.fromRGB(0, 18, 255)),
+	ColorSequenceKeypoint.new(0.600, Color3.fromRGB(0, 255, 255)),
+	ColorSequenceKeypoint.new(0.800, Color3.fromRGB(22, 255, 0)),
+	ColorSequenceKeypoint.new(0.900, Color3.fromRGB(235, 255, 0)),
+	ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 0, 5))
+}
+horiz.Rotation = 0
+
+local vert = Instance.new("UIGradient", G2L["15"])
+vert.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 0))
+}
+vert.Rotation = 90
+vert.Name = "Overlay"
 
 -- StarterGui.Bracket.Pallete.GradientPallete.Dot
 G2L["16"] = Instance.new("Frame", G2L["15"]);
